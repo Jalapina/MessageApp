@@ -1,21 +1,24 @@
 var mongoose = require("mongoose");
 var User = require("./userSchema.js");
+var Chat = require("./chatSchema.js")
+
 const { ObjectId } = mongoose.Schema.Types;
 
 var messageSchema = mongoose.Schema({
-    sender:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-    },
-    reciever:{
+
+    user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
     message:{
         type:String, 
         trim: true,
-        minlength: 2,
+        minlength: 1,
         require: true,
+    },
+    chat:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Chat'
     },
 });
 
