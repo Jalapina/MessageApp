@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var User = mongoose.model("User");
 var Message = mongoose.model("Message");
-var Chat = mongoose.model("Chat");
+var Chat = mongoose.model("Chat")
 
 module.exports.create = function(request, response){
     console.log(request.body,"YOUR MESSAGE")
