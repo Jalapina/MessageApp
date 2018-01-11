@@ -4,8 +4,17 @@ var Message = mongoose.model("Message");
 
 module.exports.create = function(req,res){
 
-    Chat.create({participants:req.user._id, participants:req.reciever._id },function(err,chat){
-
+    Chat.new({
+        participants:req.user._id, participants:req.reciever._id 
+    }
+        ,function(err,chat){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log("Created new chat!")
+            console.log("***",chat)
+        }
     });
 }
 

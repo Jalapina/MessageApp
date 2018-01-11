@@ -5,7 +5,7 @@ const { ObjectId } = mongoose.Schema.Types;
 
 var chatSchema = mongoose.Schema({
 
-    participant:{
+    participants:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },

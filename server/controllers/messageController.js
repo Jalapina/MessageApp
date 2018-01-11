@@ -5,7 +5,12 @@ var Chat = mongoose.model("Chat")
 
 module.exports.create = function(request, response){
     console.log(request.body,"YOUR MESSAGE")
-    Message.create({message:request.body.context , sender:request.body.sender , reciever:request.body.reciever}, 
+    Message.create(
+        {   
+            chat: request.body.chat,
+            message:request.body.context, 
+            sender:request.body.sender
+        }, 
         function(err,message){
             if(err){
                 console.log("error",err);
