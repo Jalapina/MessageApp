@@ -1,5 +1,3 @@
-import { read } from "fs";
-
 var mongoose = require("mongoose");
 var Chat = mongoose.model("Chat");
 var Message = mongoose.model("Message");
@@ -40,4 +38,16 @@ module.exports.create = function(req,res){
 
 }
 
+module.exports.reply = function(req,res){
+    var reply = new Message(function(err , sentReply){
+        if(err){
+            console.log("Error while replying", err);
+        }
+        else{
+            Response.json({
+                message:"Reply was successful!"
+            })
+        }
+    })
+}
 
