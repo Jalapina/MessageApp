@@ -3,23 +3,25 @@ var Chat = mongoose.model("Chat");
 var Message = mongoose.model("Message");
 
 module.exports.create = function(req,response){
-    console.log("****",req.body,"****")
+    console.log("****",req.body,"****");
     var chat = new Chat(
         {
-            particapants: [ req.user, req.body.recipient ]
+            participants: [ req.body.sender, req.body.reciever ]
         }
-    )
+    );
 
     chat.save(function(err,newChat){
-
+        console.log(chat)
         if(err){
-            console.log("Err creating chat", err);
+            console.log("*****",chat)
+            console.log("Err creating chat", err);  
         }
+
         var message = new Message({
-            chat: newChat._id,
+            chat: chat,
             user: req.user,
             message: req.body.message,
-        })
+        });
 
         message.save(function(err,newMessage){
             if(err){
@@ -27,12 +29,12 @@ module.exports.create = function(req,response){
             }
             else{
                 response.json({
-                    message:"Chst started",
-                    chatId: chat._id 
-                })
+                    message:"Chat started",
+                    chatId: chat,
+                });
             }
-        })
-    })
+        });
+    });
 
 }
 

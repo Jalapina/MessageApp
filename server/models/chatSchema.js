@@ -1,14 +1,14 @@
 var mongoose = require("mongoose");
 var User = require("./userSchema");
 
-const { ObjectId } = mongoose.Schema.Types;
+const Schema = mongoose.Schema;
 
 var chatSchema = mongoose.Schema({
 
-    participants:{
-        type: mongoose.Schema.Types.ObjectId,
+    participants:[{
+        type: Schema.Types.ObjectId,
         ref: 'User',
-    },
+    }],
 
 });
 
