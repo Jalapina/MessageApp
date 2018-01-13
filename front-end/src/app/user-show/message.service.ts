@@ -20,4 +20,9 @@ export class MessageService {
     .map(data => data.json()).toPromise()
   }
 
+  getChat(){
+    return this._http.get("/api/chats/")
+    .map(data => data.json()).toPromise()
+  }
+
 }
