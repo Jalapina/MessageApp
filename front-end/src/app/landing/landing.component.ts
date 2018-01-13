@@ -9,7 +9,7 @@ import { User } from '../user-new/user'
 })
 export class LandingComponent implements OnInit {
   loggedUser = User
-  users: User[] = [];
+  users = [];
   chats = []
   constructor( private _userService:UserService, private _messagePrivate:MessageService ) {
     this.loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
@@ -18,6 +18,7 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     this.getUsers()
     this.getChat()
+    console.log(this.users)
   }
 
   getUsers(){
@@ -26,7 +27,7 @@ export class LandingComponent implements OnInit {
     .catch(err => console.log(err));
   }
   getChat(){
-    
+
     this._messagePrivate.getChat()
     .then( chats => this.chats = chats )
     .catch(err => console.log(err));

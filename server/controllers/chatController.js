@@ -65,6 +65,7 @@ module.exports.show = function(req,response){
                 console.log("***** ERROR WHILE GETTING MESSAGES! *****",err);
             }
             else{
+                console.log(chat,"********")
                 response.json({
                     chat: chat
                 });
@@ -74,12 +75,15 @@ module.exports.show = function(req,response){
 }
 
 module.exports.getChat = function(req, response){
+    
+    console.log("***** getChat contolloler is working!")
 
     Chat.find(function(err,chats){
         if(err){
             console.log(err);
         }
         else{
+            console.log(chats)
             response.json({
                 chats:chats
             });

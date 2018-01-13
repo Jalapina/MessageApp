@@ -11,8 +11,9 @@ module.exports = function(app){
 
     //Chat
     
-    app.get('/api/chats/',chat.show)
+    app.get('/api/chats/:chatId',chat.show);
     app.post('/api/chats/new/',chat.create);
+    app.get('/api/chats/',chat.getChat)
 
     //Messages
 
