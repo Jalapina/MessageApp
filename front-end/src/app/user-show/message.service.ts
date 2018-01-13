@@ -11,7 +11,7 @@ export class MessageService {
   getMessages({sendee,reciever}){
     // console.log("Calling getMessages service",{sender,reciever})
     // console.log("/api/messages/"+sender+"/"+reciever)
-    return this._http.get("/api/messages/"+sendee+"/"+reciever)
+    return this._http.get("/api/chats/"+sendee+"/")
     .map( data => data.json()).toPromise();
   }
   

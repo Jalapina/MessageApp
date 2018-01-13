@@ -60,16 +60,31 @@ module.exports.show = function(req,response){
     Message.find({chat:req.params.chatId}.populate({
         path:'User',
         select: 'user.username'
-}), function(err, chat){
+    }), function(err, chat){
+            if(err){
+                console.log("***** ERROR WHILE GETTING MESSAGES! *****",err);
+            }
+            else{
+                response.json({
+                    chat: chat
+                });
+            }
+
+        })
+}
+
+module.exports.getChat = function(req, response){
+
+    Chat.find(function(err,chats){
         if(err){
-            console.log("***** ERROR WHILE GETTING MESSAGES! *****",err);
+            console.log(err);
         }
         else{
             response.json({
-                chat: chat
+                chats:chats
             });
         }
+    });
 
-    })
 }
 

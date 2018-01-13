@@ -22,6 +22,7 @@ const routes: Routes = [
       pathMatch: 'full',
       component: UserShowComponent
     },
+    
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
