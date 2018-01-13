@@ -21,6 +21,7 @@ export class MessageService {
   }
 
   getChat(){
+    console.log("getChat service is working!")
     return this._http.get("/api/chats/")
     .map(data => data.json()).toPromise()
   }
