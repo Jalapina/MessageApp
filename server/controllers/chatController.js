@@ -56,3 +56,20 @@ module.exports.reply = function(req,response){
     })
 }
 
+module.exports.show = function(req,response){
+    Message.find({chat:req.params.chatId}.populate({
+        path:'User',
+        select: 'user.username'
+}), function(err, chat){
+        if(err){
+            console.log("***** ERROR WHILE GETTING MESSAGES! *****",err);
+        }
+        else{
+            response.json({
+                chat: chat
+            });
+        }
+
+    })
+}
+

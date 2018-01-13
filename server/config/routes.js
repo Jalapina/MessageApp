@@ -10,7 +10,8 @@ module.exports = function(app){
     app.get('/api/users',users.home)    
 
     //Chat
-
+    
+    app.get('/api/chats',chat.show)
     app.post('/api/chats/new/',chat.create);
 
     //Messages
