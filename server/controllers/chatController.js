@@ -57,6 +57,7 @@ module.exports.reply = function(req,response){
 }
 
 module.exports.show = function(req,response){
+    console.log("Raq",req.params.chatId)
     Message.find({chat:req.params.chatId}).populate({
         path:'User',
         select: 'user.username',

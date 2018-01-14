@@ -11,7 +11,7 @@ import { Message } from './message'
 
 export class UserShowComponent implements OnInit {
   
-  public reciever = this._router.snapshot.params['id'];
+  public chatId = this._router.snapshot.params['id'];
   public userId;
   public sendee = JSON.parse(localStorage.getItem('loggedUser'))._id
   public message = new Message()
@@ -28,6 +28,7 @@ export class UserShowComponent implements OnInit {
   ngOnInit() {
 
     let id = this._router.snapshot.params['id']
+    console.log(id)
     this.userId = id
     this.getMessages();
 
@@ -35,16 +36,16 @@ export class UserShowComponent implements OnInit {
 
   getMessages(){
 
-    const { reciever, sendee } = this
+    const id  = this
     
-    this._messageService.getMessages({reciever,sendee})
+    this._messageService.getMessages(id)
     .then( messages => this.messages = messages )
     .catch( err => console.log(err));
 
   } 
 
   createMessage(message){
-    this.message.reciever = this.reciever
+    // this.message.reciever = this.reciever
     this.message.sender = this.sendee
     console.log(this.message);
     

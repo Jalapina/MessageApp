@@ -8,8 +8,8 @@
 
 <ul>
   
-  <li *ngFor="let user of chats.chats">
-      <a [routerLink]="[user._id]">chatID</a>
+  <li *ngFor="let chat of chats.chats">
+      <a [routerLink]="['/show',chat._id]">chatID</a>
   </li>
 
 </ul>

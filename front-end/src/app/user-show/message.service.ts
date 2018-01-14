@@ -8,10 +8,10 @@ export class MessageService {
 
   constructor( private _http:Http ) { }
 
-  getMessages({sendee,reciever}){
+  getMessages(id){
     // console.log("Calling getMessages service",{sender,reciever})
     // console.log("/api/messages/"+sender+"/"+reciever)
-    return this._http.get("/api/chats/"+sendee+"/")
+    return this._http.get("/api/chats/"+id+"/")
     .map( data => data.json()).toPromise();
   }
   
