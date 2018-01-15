@@ -28,7 +28,6 @@ export class UserShowComponent implements OnInit {
   ngOnInit() {
 
     let id = this._router.snapshot.params['id']
-    console.log(id)
     this.userId = id
     this.getMessages();
 
@@ -47,11 +46,21 @@ export class UserShowComponent implements OnInit {
   createMessage(message){
     // this.message.reciever = this.reciever
     this.message.sender = this.sendee
-    console.log(this.message);
+    // console.log(this.message);
     
     this._messageService.createMessage(this.message)
     .then(status => this.getMessages())
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
+
+  }
+
+  createReply(message){
+    
+    const id = this
+
+    this._messageService.createReply(id,this.message)
+    .then(status => this.getMessages())
+    .catch(err => console.log(err));
 
   }
 

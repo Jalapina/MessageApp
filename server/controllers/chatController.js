@@ -39,10 +39,11 @@ module.exports.create = function(req,response){
 }
 
 module.exports.reply = function(req,response){
+    console.log("************",req.body.sender,"************")
     var reply = new Message({
         chat: req.params.chatId,
         message: req.body.message,
-        user: req.user._id,
+        user: req.body.sender,
     });
     reply.save(function(err , sentReply){
         if(err){
@@ -58,10 +59,8 @@ module.exports.reply = function(req,response){
 
 module.exports.show = function(req,response){
     console.log("Raq",req.params.chatId)
-    Message.find({chat:req.params.chatId}).populate({
-        path:'User',
-        select: 'user.username',
-    }), function(err, chat){
+    Message.find({chat:req.params.chatId}, function(err, chat){
+        console.log("RESPONSE",chat)
             if(err){
                 console.log("***** ERROR WHILE GETTING MESSAGES! *****",err);
             }
@@ -71,8 +70,7 @@ module.exports.show = function(req,response){
                     chat: chat
                 });
             }
-
-        }
+        });
 }
 
 module.exports.getChat = function(req, response){

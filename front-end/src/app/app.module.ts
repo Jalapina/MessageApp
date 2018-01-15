@@ -11,6 +11,7 @@ import { UserCreateComponent } from './user-new/user-create/user-create.componen
 import { LandingComponent } from './landing/landing.component';
 import { UserLoginComponent } from './user-new/user-login/user-login.component';
 import { UserShowComponent } from './user-show/user-show.component';
+import { ChatComponent } from '../app/chat/chat.component';
 
 @NgModule({
   
@@ -21,6 +22,7 @@ import { UserShowComponent } from './user-show/user-show.component';
     LandingComponent,
     UserLoginComponent,
     UserShowComponent,
+    ChatComponent,
   ],
 
   imports: [
