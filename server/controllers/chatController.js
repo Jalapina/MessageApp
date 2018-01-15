@@ -58,7 +58,7 @@ module.exports.reply = function(req,response){
 }
 
 module.exports.show = function(req,response){
-    console.log("Raq",req.params.chatId)
+    // console.log("Raq",req.params.chatId)
     Message.find({chat:req.params.chatId}, function(err, chat){
         console.log("RESPONSE",chat)
             if(err){

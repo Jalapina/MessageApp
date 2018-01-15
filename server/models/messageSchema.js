@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var User = require("./userSchema.js");
-var Chat = require("./chatSchema.js")
+var Chat = require("./chatSchema.js");
 
 const { ObjectId } = mongoose.Schema.Types;
 
@@ -10,16 +10,19 @@ var messageSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
+
     message:{
         type:String, 
         trim: true,
         minlength: 1,
         require: true,
     },
+
     chat:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Chat'
+        ref: 'Chat',
     },
+
 });
 
 mongoose.model('Message', messageSchema);

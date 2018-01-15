@@ -1,5 +1,6 @@
 import { UserService } from './user-new/user.service';
-import { MessageService } from './user-show/message.service'
+import { MessageService } from './user-show/message.service';
+import { ChatService } from './chat/chat.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -12,6 +13,7 @@ import { LandingComponent } from './landing/landing.component';
 import { UserLoginComponent } from './user-new/user-login/user-login.component';
 import { UserShowComponent } from './user-show/user-show.component';
 import { ChatComponent } from '../app/chat/chat.component';
+import { from } from 'rxjs/observable/from';
 
 @NgModule({
   
@@ -36,6 +38,7 @@ import { ChatComponent } from '../app/chat/chat.component';
   providers: [
     UserService,
     MessageService,
+    ChatService,
   ],
 
   bootstrap: [AppComponent]
