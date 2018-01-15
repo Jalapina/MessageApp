@@ -3,8 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { UserNewComponent } from './user-new/user-new.component';
 import { UserShowComponent } from './user-show/user-show.component'
-
+import { ChatComponent } from './chat/chat.component'
+ 
 const routes: Routes = [
+  
     { 
       path: '', 
       pathMatch: 'full', 
@@ -21,6 +23,12 @@ const routes: Routes = [
       path: 'show/:id',
       pathMatch: 'full',
       component: UserShowComponent
+    },
+
+    {
+      path: 'users/:id',
+      pathMatch: 'full',
+      component: ChatComponent,
     },
     
 ];
