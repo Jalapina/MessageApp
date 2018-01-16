@@ -7,9 +7,10 @@ export class ChatService {
 
   constructor(private _http:Http ) { }
 
-  createMessage(message:Message){
+  createMessage(recieverId,message:Message){
     
-        return this._http.post("/api/chats/new/",message)
+      console.log("recieverId",recieverId)
+        return this._http.post("/api/chats/new/"+recieverId+"/",message)
         .map(data => data.json()).toPromise()
       
       }

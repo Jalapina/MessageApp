@@ -6,21 +6,21 @@ module.exports.create = function(req,response){
     console.log("****",req.body,"****");
     var chat = new Chat(
         {
-            participants: [ req.body.sender, req.body.reciever ]
+            participants: [ req.body.sender, req.params.recieverId ]
         }
     );
 
     chat.save(function(err,newChat){
-        console.log(chat)
+        console.log("C H A T",chat._id)
         if(err){
             console.log("*****",chat)
             console.log("Err creating chat", err);  
         }
 
         var message = new Message({
-            chat: chat,
-            user: req.user,
-            message: req.body.message,
+            chat: chat._id,
+            user: req.body.sender,
+            message: req.body.context,
         });
 
         message.save(function(err,newMessage){

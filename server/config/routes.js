@@ -13,7 +13,7 @@ module.exports = function(app){
     
     app.get('/api/chats/:chatId',chat.show);
     app.get('/api/chats/',chat.getChat);
-    app.post('/api/chats/new/',chat.create);
+    app.post('/api/chats/new/:recieverId',chat.create);
     app.post('/api/chats/reply/:chatId',chat.reply);
 
     //Messages

@@ -1,9 +1,9 @@
 
 <h1>
-  user-show works!
+  chat works!
 </h1>
 
-<form name="sendMessage" >
+<form name="sendMessage" (submit)="createMessage()">
   <label for="content">Write Message:</label>
   <textarea id="content" name="context" cols="30" rows="10" ></textarea>
   <input type="submit" value="Send">
