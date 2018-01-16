@@ -43,16 +43,7 @@ export class UserShowComponent implements OnInit {
 
   } 
 
-  createMessage(message){
-    // this.message.reciever = this.reciever
-    this.message.sender = this.sendee
-    // console.log(this.message);
-    
-    this._messageService.createMessage(this.message)
-    .then(status => this.getMessages())
-    .catch(err => console.log(err));
-
-  }
+ 
 
   createReply(message){
     

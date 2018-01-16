@@ -19,12 +19,7 @@ export class MessageService {
 
   }
   
-  createMessage(message:Message){
-
-    return this._http.post("/api/chats/new/",message)
-    .map(data => data.json()).toPromise()
   
-  }
 
   getChat(){
     

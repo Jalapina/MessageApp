@@ -3,6 +3,15 @@
 </p>
 
 {{ users | json }}
+
+<ul>
+  
+  <li *ngFor="let user of users.users">
+      <a [routerLink]="['/users',user._id]">{{ user.username }}</a>
+  </li>
+
+</ul>
+
 <hr>
 {{ chats | json }}
 
