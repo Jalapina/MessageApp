@@ -22,9 +22,9 @@ export class ChatComponent implements OnInit {
     console.log(this.sender)
   }
 
-  createMessage(recieverId,message){
+  createMessage(message){
     // this.message.reciever = this.reciever
-    this.message.sender = this.sender
+    // this.message.sender = this.sender
     console.log(this.message);
     
     this._chatService.createMessage(this.recieverId,this.message)

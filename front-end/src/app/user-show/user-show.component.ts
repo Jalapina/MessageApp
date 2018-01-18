@@ -6,7 +6,7 @@ import { Message } from './message'
 @Component({
   selector: 'app-user-show',
   templateUrl: './user-show.component.html',
-  styleUrls: ['./user-show.component.css']
+  styleUrls: ['./user-show.component.css'],
 })
 
 export class UserShowComponent implements OnInit {
@@ -36,7 +36,6 @@ export class UserShowComponent implements OnInit {
   getMessages(){
 
     const id  = this
-    
     this._messageService.getMessages(id)
     .then( messages => this.messages = messages )
     .catch( err => console.log(err));
@@ -48,7 +47,6 @@ export class UserShowComponent implements OnInit {
   createReply(message){
     
     const id = this
-
     this._messageService.createReply(id,this.message)
     .then(status => this.getMessages())
     .catch(err => console.log(err));

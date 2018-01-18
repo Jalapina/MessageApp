@@ -5,6 +5,6 @@
 
 <form name="sendMessage" (submit)="createMessage()">
   <label for="content">Write Message:</label>
-  <textarea id="content" name="context" cols="30" rows="10" ></textarea>
+  <textarea id="content" name="context" cols="30" rows="10" [(ngModel)]="message.context" ></textarea>
   <input type="submit" value="Send">
 </form>
