@@ -14,28 +14,25 @@ export class UserShowComponent implements OnInit {
   public chatId = this._router.snapshot.params['id'];
   // public userId;
   public sender = JSON.parse(localStorage.getItem('loggedUser'))._id
-  public message = new Message()
+  public message = new Message()  
   
   loggedUser;
 
   constructor(private _router: ActivatedRoute, private _messageService:MessageService) { 
     this.loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-    this.messages;
   }
 
-  messages: Message[] = [];
+  public messages: Message[] = [];
   
   ngOnInit() {
 
-    let id = this._router.snapshot.params['id']
-    console.log("Current id route",id)
-    this.getMessages();
+  this.getMessages();
 
   }
 
   getMessages(){
 
-    const id  = this
+    const id  = this;
     this._messageService.getMessages(id)
     .then( messages => this.messages = messages )
     .catch( err => console.log(err));
@@ -46,11 +43,10 @@ export class UserShowComponent implements OnInit {
 
   createReply(){
     
-    const id = this
+    const id = this;
 
-   this.message.sender = this.sender
-   console.log(this.message,"MESSAGE");
-    
+    this.message.sender = this.sender;
+          
     this._messageService.createReply(id,this.message)
     .then(status => this.getMessages())
     .catch(err => console.log(err));

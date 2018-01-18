@@ -1,6 +1,6 @@
 <h1>
   user-show works!
-  {{ userId }}
+  {{ sender }}
 </h1>
 
 <a [routerLink]="['/home']">Home</a>
@@ -14,7 +14,7 @@
 {{messages | json}}
 
 <ul>
-  <li *ngFor="let msg of messages.messages">
-    {{msg}}
-  </li>
+  <li *ngFor="let message of messages.chat">
+    {{message.message}}
 </ul>
+
