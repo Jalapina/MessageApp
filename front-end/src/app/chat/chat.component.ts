@@ -31,7 +31,7 @@ export class ChatComponent implements OnInit {
     
     this._chatService.createMessage(this.recieverId,this.message)
     .then(message => this.message = message)
-    .then(response => {this._router.navigate['/show/'+890+'/'];})
+    .then(response => {this._router.navigateByUrl('show/'+response.chatId._id);})
     .catch(err => console.log(err));
 
   }
