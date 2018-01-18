@@ -10,7 +10,7 @@ import { User } from '../user-new/user'
 })
 
 export class LandingComponent implements OnInit {
-  
+
   loggedUser = User
   users = [];
   chats = []

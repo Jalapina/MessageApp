@@ -12,7 +12,7 @@ export class ChatService {
       console.log("recieverId",recieverId)
         return this._http.post("/api/chats/new/"+recieverId+"/",message)
         .map(data => data.json()).toPromise()
-      
+        
       }
 
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 import { Message } from '../user-show/message';
 import { ChatService } from './chat.service'
 import { Router } from '@angular/router'
+// import { Response } from '@angular/http/src/static_response';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class ChatComponent implements OnInit {
   public message = new Message() 
   public sender = JSON.parse(localStorage.getItem('loggedUser'))._id  
   public recieverId = this._param.snapshot.params['id'];  
+  // private route;
 
   constructor( private _chatService:ChatService, private _router:Router, private _param:ActivatedRoute) { }
 
@@ -23,16 +25,13 @@ export class ChatComponent implements OnInit {
   }
 
   createMessage(message){
-    // this.message.reciever = this.reciever
-    // this.message.sender = this.sender
+
+    this.message.sender = this.sender
     console.log(this.message);
     
     this._chatService.createMessage(this.recieverId,this.message)
     .then(message => this.message = message)
-    .then(function(Response){
-      console.log("R E S P O N S E",Response)
-    })
-    .then(status => {this._router.navigateByUrl('/show/'+404+'/');})
+    .then(response => {this._router.navigate['/show/'+890+'/'];})
     .catch(err => console.log(err));
 
   }
