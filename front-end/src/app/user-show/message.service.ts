@@ -29,10 +29,11 @@ export class MessageService {
 
   }
 
-  createReply(id,message:Message){
+  createReply(id,message){
 
-    const chatId = id.chatId    
-    return this._http.post('/api/chats/reply/'+chatId+'/',message)
+    const chatId = id.chatId
+    console.log("CHATID Service",chatId,'/n',message);
+    return this._http.post('/api/chats/reply/'+chatId,message)
     .map(data => data.json()).toPromise()
 
   }

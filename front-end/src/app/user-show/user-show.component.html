@@ -2,12 +2,17 @@
   user-show works!
   {{ userId }}
 </h1>
+
+<a [routerLink]="['/home']">Home</a>
+
 <form name="sendMessage" (submit)="createReply()">
   <label for="content">Write Message:</label>
   <textarea id="content" name="context" cols="30" rows="10" [(ngModel)]="message.context"></textarea>
   <input type="submit" value="Send">
 </form>
+
 {{messages | json}}
+
 <ul>
   <li *ngFor="let msg of messages.messages">
     {{msg}}

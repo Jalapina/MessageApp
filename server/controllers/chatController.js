@@ -42,7 +42,7 @@ module.exports.reply = function(req,response){
     console.log("************",req.body.sender,"************")
     var reply = new Message({
         chat: req.params.chatId,
-        message: req.body.message,
+        message: req.body.context,
         user: req.body.sender,
     });
     reply.save(function(err , sentReply){
