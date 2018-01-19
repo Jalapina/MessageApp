@@ -2,7 +2,7 @@
   You're logged in as {{ loggedUser.username }} {{ loggedUser._id }}
 </p>
 
-{{ users | json }}
+<button (click)="logOut()" >Log Out</button>
 
 <ul>
   
@@ -13,12 +13,11 @@
 </ul>
 
 <hr>
-{{ chats | json }}
 
 <ul>
   
   <li *ngFor="let chat of chats.chats">
-      <a [routerLink]="['/show',chat._id]">{{chat._id}}</a>
+      <a [routerLink]="['/chats',chat._id]">{{chat._id}}</a>
   </li>
 
 </ul>

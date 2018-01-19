@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import { UserService } from '../user-new/user.service'
 import { MessageService } from '../user-show/message.service'
 import { User } from '../user-new/user'
+import { Route } from '@angular/router/src/config';
 
 @Component({
   selector: 'app-landing',
@@ -15,7 +17,7 @@ export class LandingComponent implements OnInit {
   users = [];
   chats = []
 
-  constructor( private _userService:UserService, private _messagePrivate:MessageService ) {
+  constructor( private _userService:UserService, private _messagePrivate:MessageService, private _router:Router) {
   
     this.loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
    
@@ -39,6 +41,18 @@ export class LandingComponent implements OnInit {
     .then( chats => this.chats = chats )
     .catch(err => console.log(err));
 
+  }
+
+  logOut(){
+    
+  localStorage.clear()
+  
+  this._router.navigate(['/']).then(nav => {
+    console.log(nav); // true if navigation is successful
+  }, err => {
+    console.log(err) // when there's an error
+  });  
+    
   }
 
 }
