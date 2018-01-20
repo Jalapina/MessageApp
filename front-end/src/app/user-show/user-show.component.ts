@@ -35,6 +35,9 @@ export class UserShowComponent implements OnInit {
     const id  = this;
     this._messageService.getMessages(id)
     .then( messages => this.messages = messages )
+    .then(function(messages){
+      console.log(messages)
+    })
     .catch( err => console.log(err));
 
   } 

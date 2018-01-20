@@ -59,7 +59,9 @@ module.exports.reply = function(req,response){
 
 module.exports.show = function(req,response){
     // console.log("Raq",req.params.chatId)
-    Message.find({chat:req.params.chatId}, function(err, chat){
+    Message.find({chat:req.params.chatId})
+    .populate("user")
+    .exec(function(err, chat){
         // console.log("RESPONSE",chat)
             if(err){
                 console.log("***** ERROR WHILE GETTING MESSAGES! *****",err);
@@ -79,15 +81,14 @@ module.exports.getChat = function(req, response){
 
     Chat.find({participants:req.params.userId})
     .populate({
-        path: "user",
-        select: "user.username"
-      })
+        path:"user",
+        select: 'username',
+    })
       .exec(function(err,chats){
         if(err){
             console.log(err);
         }
         else{
-            console.log(chats)
             response.json({
                 chats:chats
             });

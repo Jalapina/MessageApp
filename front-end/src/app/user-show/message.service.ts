@@ -12,14 +12,10 @@ export class MessageService {
     
     // console.log("Calling getMessages service",id.chatId)
     const chatId = id.chatId
-    // console.log("/api/messages/"+chatId+"/")
-    
     return this._http.get("/api/chats/"+chatId+"/")
     .map( data => data.json()).toPromise();
 
   }
-  
-  
 
   getChat(user){
     var userId = user._id
