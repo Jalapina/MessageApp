@@ -35,23 +35,26 @@ export class LandingComponent implements OnInit {
     
   }
   getChat(){
-
-    // console.log("getChat component is working!")
-    this._messagePrivate.getChat()
-    .then( chats => this.chats = chats )
+    
+    console.log("getChat component is working!",this.loggedUser)
+    this._messagePrivate.getChat(this.loggedUser)
+    .then( chats => this.chats = chats)
+    .then(function(chats){
+      console.log(chats)      
+    })
     .catch(err => console.log(err));
 
   }
 
   logOut(){
     
-  localStorage.clear()
-  
-  this._router.navigate(['/']).then(nav => {
-    console.log(nav); // true if navigation is successful
-  }, err => {
-    console.log(err) // when there's an error
-  });  
+    localStorage.clear()
+    
+    this._router.navigate(['/']).then(nav => {
+      console.log(nav);
+    }, err => {
+      console.log(err);
+    });  
     
   }
 

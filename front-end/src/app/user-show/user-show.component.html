@@ -11,10 +11,9 @@
   <input type="submit" value="Send">
 </form>
 
-{{messages | json}}
-
 <ul>
   <li *ngFor="let message of messages.chat">
     {{message.message}}
+  </li>
 </ul>
 

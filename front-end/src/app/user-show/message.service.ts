@@ -21,10 +21,10 @@ export class MessageService {
   
   
 
-  getChat(){
-    
-    // console.log("getChat service is working!")
-    return this._http.get("/api/chats/")
+  getChat(user){
+    var userId = user._id
+    console.log("getChat service is working!",userId)
+    return this._http.get("/api/getchats/"+userId,"/")
     .map(data => data.json()).toPromise()
 
   }
@@ -32,7 +32,7 @@ export class MessageService {
   createReply(id,message){
 
     const chatId = id.chatId
-    console.log("CHATID Service",chatId,'/n',message);
+    console.log("CHATID Service",chatId,'\n',message);
     return this._http.post('/api/chats/reply/'+chatId,message)
     .map(data => data.json()).toPromise()
 

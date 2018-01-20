@@ -1,4 +1,3 @@
-{{ users | json }}
 <h3>Logged User</h3>
 <p *ngIf="loggedUser">{{ loggedUser | json }}</p>
 <app-user-create (createUserEvent)="create($event)"></app-user-create>

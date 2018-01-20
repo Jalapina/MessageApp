@@ -60,12 +60,12 @@ module.exports.reply = function(req,response){
 module.exports.show = function(req,response){
     // console.log("Raq",req.params.chatId)
     Message.find({chat:req.params.chatId}, function(err, chat){
-        console.log("RESPONSE",chat)
+        // console.log("RESPONSE",chat)
             if(err){
                 console.log("***** ERROR WHILE GETTING MESSAGES! *****",err);
             }
             else{
-                console.log(chat,"********")
+                // console.log(chat,"********")
                 response.json({
                     chat: chat
                 });
@@ -75,9 +75,14 @@ module.exports.show = function(req,response){
 
 module.exports.getChat = function(req, response){
     
-    console.log("***** getChat contolloler is working!")
+    console.log("getChat controller is working!",req.params)
 
-    Chat.find(function(err,chats){
+    Chat.find({participants:req.params.userId})
+    .populate({
+        path: "user",
+        select: "user.username"
+      })
+      .exec(function(err,chats){
         if(err){
             console.log(err);
         }
