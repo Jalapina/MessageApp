@@ -38,7 +38,7 @@ export class LandingComponent implements OnInit {
     
     console.log("getChat component is working!",this.loggedUser)
     this._messagePrivate.getChat(this.loggedUser)
-    .then( chats => this.chats = chats)
+    .then( chats => this.chats = chats.chats)
     .then(function(chats){
       console.log(chats)      
     })

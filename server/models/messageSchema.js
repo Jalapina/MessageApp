@@ -23,6 +23,11 @@ var messageSchema = mongoose.Schema({
         ref: 'Chat',
     },
 
-});
+    
+
+}, {
+timestamps: true,
+}
+);
 
 mongoose.model('Message', messageSchema);

@@ -10,6 +10,9 @@ var chatSchema = mongoose.Schema({
         ref: 'User',
     }],
 
+}, 
+{
+    timestamps: true,
 });
 
 mongoose.model('Chat',chatSchema);

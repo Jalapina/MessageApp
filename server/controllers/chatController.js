@@ -60,7 +60,7 @@ module.exports.reply = function(req,response){
 module.exports.show = function(req,response){
     // console.log("Raq",req.params.chatId)
     Message.find({chat:req.params.chatId})
-    .populate("user")
+    .populate("user","username")
     .exec(function(err, chat){
         // console.log("RESPONSE",chat)
             if(err){
@@ -80,19 +80,32 @@ module.exports.getChat = function(req, response){
     console.log("getChat controller is working!",req.params)
 
     Chat.find({participants:req.params.userId})
-    .populate({
-        path:"user",
-        select: 'username',
-    })
+    .select('_id')
       .exec(function(err,chats){
         if(err){
             console.log(err);
         }
-        else{
-            response.json({
-                chats:chats
-            });
-        }
+        let conversations = [];
+        chats.forEach(function(chat){
+            Message.find({chat:chat._id})
+            .sort('-createdAt')            
+            .limit(1)
+            .populate("user")
+            .exec(function(err,message){
+                if(err){
+                    console.log(err);
+                }
+
+                conversations.push(message);
+
+                if(conversations.length == chats.length ){
+                    response.json({
+                        chats:conversations
+                    })
+                }
+
+            })
+        })
     });
 
 }

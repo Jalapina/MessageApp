@@ -16,8 +16,8 @@
 
 <ul>
   
-  <li *ngFor="let chat of chats.chats, let i = index">
-      <a [routerLink]="['/chats',chat._id]">{{chat.participants[1]}}</a>
+  <li *ngFor="let chat of chats, let i = index">
+      <a [routerLink]="['/chats',chat[i]._id]">{{chat[i].user.username}}</a>
   </li>
 
 </ul>
