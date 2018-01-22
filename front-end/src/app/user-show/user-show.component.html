@@ -1,19 +1,12 @@
 <h1>
-  user-show works!
-  {{ sender }}
+  You're talking to
 </h1>
-
+  
 <a [routerLink]="['/home']">Home</a>
-
-<form name="sendMessage" (submit)="createReply()">
+  
+<form name="sendMessage" (submit)="createMessage()">
   <label for="content">Write Message:</label>
-  <textarea id="content" name="context" cols="30" rows="10" [(ngModel)]="message.context"></textarea>
+  <textarea id="content" name="context" cols="30" rows="10" [(ngModel)]="message.context" ></textarea>
   <input type="submit" value="Send">
 </form>
-
-<ul>
-  <li *ngFor="let message of messages.chat">
-    {{message.user.username}}:{{message.message}}
-  </li>
-</ul>
 

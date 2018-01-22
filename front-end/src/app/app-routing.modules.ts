@@ -20,13 +20,13 @@ const routes: Routes = [
     },
     
     {
-      path: 'chats/:id',
+      path: 'users/:id',
       pathMatch: 'full',
       component: UserShowComponent
     },
 
     {
-      path: 'users/:id',
+      path: 'chats/:id',
       pathMatch: 'full',
       component: ChatComponent,
     },

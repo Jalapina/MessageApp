@@ -13,14 +13,13 @@
 
 <hr>
 
-<ul>
   
-  <div *ngFor="let chat of chats; let i = index">
-      <div *ngFor="let message of chat">
-        <a [routerLink]="['/users',message._id]">{{message.message}}</a>
-      </div>
-  </div>
+<div *ngFor="let chat of chats">
+    <div *ngFor="let message of chat">
+      <a [routerLink]="['/chats',message.chat]">{{message.message}}</a>
+    </div>
+</div>
 
-</ul>
+
 
 

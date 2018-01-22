@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { Message } from '../user-show/message';
 import { ChatService } from './chat.service'
+import { MessageService } from '../user-show/message.service'
 import { Router } from '@angular/router'
 // import { Response } from '@angular/http/src/static_response';
 
@@ -13,26 +14,40 @@ import { Router } from '@angular/router'
 })
 export class ChatComponent implements OnInit {
 
+  public id = this._params.snapshot.params['id'];  
   public message = new Message() 
+  public messages: Message[] = [];  
   public sender = JSON.parse(localStorage.getItem('loggedUser'))._id  
-  public recieverId = this._param.snapshot.params['id'];  
   // private route;
 
-  constructor( private _chatService:ChatService, private _router:Router, private _param:ActivatedRoute) { }
+  constructor( private _chatService:ChatService,private _params: ActivatedRoute, private _router:Router,private _messageService:MessageService) { }
 
   ngOnInit() {
-    console.log(this.sender)
+    this.getMessages();    
   }
 
-  createMessage(message){
+  getMessages(){
+    console.log(this.id)
+    const id  = this;
+    this._messageService.getMessages(id)
+    .then( messages => this.messages = messages )
+    .then(function(messages){
+      console.log(messages)
+    })
+    .catch( err => console.log(err));
 
-    this.message.sender = this.sender
-    console.log(this.message);
+  }   
+
+  createReply(){
     
-    this._chatService.createMessage(this.recieverId,this.message)
-    .then(message => this.message = message)
-    .then(response => {this._router.navigateByUrl('chats/'+response.chatId._id);})
+    const id = this;
+
+    this.message.sender = this.sender;
+          
+    this._messageService.createReply(id,this.message)
+    .then(status => this.getMessages())
     .catch(err => console.log(err));
 
   }
+
 }

@@ -10,8 +10,8 @@ export class MessageService {
 
   getMessages(id){
     
-    // console.log("Calling getMessages service",id.chatId)
-    const chatId = id.chatId
+    console.log("Calling getMessages service",id.id)
+    const chatId = id.id
     return this._http.get("/api/chats/"+chatId+"/")
     .map( data => data.json()).toPromise();
 
