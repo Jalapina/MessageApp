@@ -31,12 +31,14 @@ export class LandingComponent implements OnInit {
   getUsers(){
     this._userService.getUsers()
     .then(users => this.users = users)
+    .then(function(users){
+      console.log(users)
+    })
     .catch(err => console.log(err));
     
   }
   getChat(){
     
-    console.log("getChat component is working!",this.loggedUser)
     this._messagePrivate.getChat(this.loggedUser)
     .then( chats => this.chats = chats.chats)
     .then(function(chats){

@@ -18,8 +18,6 @@ module.exports.home = function(request, response){
 
 module.exports.login = function(request, response){
 
-    console.log("***** SERVER",request.body,"SERVER *****");
-
     User.findOne({username: request.body.username}, function(err, user){
         if(err){
             console.log('Server error',err)
@@ -28,7 +26,7 @@ module.exports.login = function(request, response){
             });
         }
         else if(user.validPassword(request.body.password)){
-            console.log('LOGGED IN', user )
+
             response.json({
                 _id: user._id,
                 username: user.username,
@@ -57,6 +55,7 @@ module.exports.login = function(request, response){
 }
 
 module.exports.register = function(request, response){
+    
     let user = new User({
         username: request.body.username,
         password: request.body.password,
