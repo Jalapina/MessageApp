@@ -27,8 +27,8 @@ export class MessageService {
 
   createReply(id,message){
 
-    const chatId = id.chatId
-    console.log("CHATID Service",chatId,'\n',message);
+    const chatId = id.id
+    console.log("CHATID Service",message,chatId);
     return this._http.post('/api/chats/reply/'+chatId,message)
     .map(data => data.json()).toPromise()
 

@@ -7,17 +7,22 @@
 <hr>
 
 <div *ngFor="let user of users.users">
-    <a *ngIf="user._id != loggedUser._id" [routerLink]="['/users',user._id]">{{ user.username }}</a>
+    
+  <a *ngIf="user._id != loggedUser._id " [routerLink]="['/users',user._id]">{{ user.username }}</a>
+        
 </div>
-
+      
 
 <hr>
-
   
 <div *ngFor="let chat of chats">
-    <div *ngFor="let message of chat">
-      <a [routerLink]="['/chats',message.chat]">{{message.message}}</a>
+
+  <div *ngFor="let message of chat">
+  
+    <a [routerLink]="['/chats',message.chat]">{{message.message}}</a>
+    
     </div>
+
 </div>
 
 
