@@ -29,11 +29,13 @@ export class LandingComponent implements OnInit {
   }
 
   getUsers(){
+    
     this._userService.getUsers()
     .then(users => this.users = users)
     .then(function(users){
-      console.log(users)
+      // console.log(users)
     })
+
     .catch(err => console.log(err));
     
   }

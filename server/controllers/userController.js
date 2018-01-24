@@ -60,7 +60,6 @@ module.exports.register = function(request, response){
         username: request.body.username,
         password: request.body.password,
     });
-
         user.save(function(err){
             if(err){
                 console.log(err,"**User ERROR**")
@@ -70,7 +69,8 @@ module.exports.register = function(request, response){
             }
             else{
                 response.json({
-                    message: 'Successfully made a user!', user:user
+                    _id: user._id,
+                    username: user.username,
                 });
             }
         });

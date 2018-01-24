@@ -13,8 +13,17 @@ export class UserService {
   }
   
   create(user:User){
+    console.log("create Service",user)
     return this._http.post('/api/users', user)
-    .map(data => data.json()).toPromise()
+    .map(data => {
+            console.log("JSON",data.json())
+            let logged = data.json()
+      
+            localStorage.setItem('loggedUser', JSON.stringify(logged));
+      
+            return logged
+      
+      }).toPromise();
   }
 
   login(_user:any){

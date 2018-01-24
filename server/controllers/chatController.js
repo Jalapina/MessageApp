@@ -80,16 +80,17 @@ module.exports.getChat = function(req, response){
     // console.log("getChat controller is working!",req.params)
 
     Chat.find({participants:req.params.userId})
-    // .select('_id')
+    .select('_id')
       .exec(function(err,chats){
         if(err){
             console.log(err);
         }
         let conversations = [];
+        
         chats.forEach(function(chat){
 
             Message.find({chat:chat._id})
-            .sort('-createdAt')            
+            .sort('createdAt')            
             .limit(1)
             .populate("user")
             .exec(function(err,message){

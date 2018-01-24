@@ -20,6 +20,7 @@ export class UserNewComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+    console.log(this.loggedUser)
   }
 
   getUsers(){
@@ -29,8 +30,11 @@ export class UserNewComponent implements OnInit {
   }
 
   create(user:User){
+
+    console.log('create',user)
+
     this._userService.create(user)
-    .then( status => this.getUsers() )
+    .then( status => {this._router.navigateByUrl('/home')} )
     .catch(err => console.log(err));
   }
 

@@ -12,19 +12,14 @@
         
 </div>
       
-
 <hr>
   
 <div *ngFor="let chat of chats">
 
-  <div *ngFor="let message of chat">
+  <div *ngFor="let message of chat   ">
   
     <a [routerLink]="['/chats',message.chat]">{{message.message}}</a>
     
-    </div>
+  </div>
 
 </div>
-
-
-
-
