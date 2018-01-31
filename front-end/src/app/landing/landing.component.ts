@@ -17,7 +17,7 @@ export class LandingComponent implements OnInit {
   users = [];
   chats = []
 
-  constructor( private _userService:UserService, private _messagePrivate:MessageService, private _router:Router) {
+  constructor( private _userService:UserService, private _messageService:MessageService, private _router:Router) {
   
     this.loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
    
@@ -41,7 +41,7 @@ export class LandingComponent implements OnInit {
   }
   getChat(){
     
-    this._messagePrivate.getChat(this.loggedUser)
+    this._messageService.getChat(this.loggedUser)
     .then( chats => this.chats = chats.chats)
     .then(function(chats){
       console.log(chats)      

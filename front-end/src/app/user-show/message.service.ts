@@ -14,14 +14,18 @@ export class MessageService {
     const chatId = id.id
     return this._http.get("/api/chats/"+chatId+"/")
     .map( data => data.json()).toPromise();
-
   }
 
   getChat(user){
     var userId = user._id
-    console.log("getChat service is working!",userId)
+
     return this._http.get("/api/getchats/"+userId,"/")
-    .map(data => data.json()).toPromise()
+    .map(data =>
+
+      data.json()
+    
+    
+    ).toPromise()
 
   }
 

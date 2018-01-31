@@ -80,19 +80,19 @@ module.exports.getChat = function(req, response){
     // console.log("getChat controller is working!",req.params)
 
     Chat.find({participants:req.params.userId})
-    .select('_id')
+    // .select('_id')
       .exec(function(err,chats){
         if(err){
             console.log(err);
         }
         let conversations = [];
-        
+        // console.log(chats,"CHATS")
         chats.forEach(function(chat){
 
             Message.find({chat:chat._id})
             .sort('createdAt')            
             .limit(1)
-            .populate("user")
+            .populate("user.username")
             .exec(function(err,message){
                 if(err){
                     console.log(err);
@@ -102,7 +102,8 @@ module.exports.getChat = function(req, response){
 
                 if(conversations.length == chats.length ){
                     response.json({
-                        chats:conversations
+                        chats:conversations,
+                        participants:chats,
                     })
                 }
 
