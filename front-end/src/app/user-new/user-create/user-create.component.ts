@@ -17,6 +17,7 @@ export class UserCreateComponent implements OnInit {
   }
 
   create(){
+    console.log(this.user)
     this.createUserEvent.emit(this.user);
     this.user = new User();
   }

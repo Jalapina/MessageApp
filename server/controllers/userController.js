@@ -55,23 +55,33 @@ module.exports.login = function(request, response){
 }
 
 module.exports.register = function(request, response){
-    
+    console.log("NEW USER", request.body)
     let user = new User({
         username: request.body.username,
         password: request.body.password,
     });
-        user.save(function(err){
+
+    if(request.body.password == request.body.confirmPassword){
+        
+        user.save(function(err,newUser){
             if(err){
-                console.log(err,"**User ERROR**")
-                response.json({
-                    errors: err
-                });
+                console.log(err)
             }
             else{
                 response.json({
-                    _id: user._id,
-                    username: user.username,
+                    user:newUser
                 });
             }
-        });
+            })
+        }
+    else{
+        console.log("IN ELSE")
+        response.json({
+            errors:{
+                message:"Passwords do not match!"
+            }
+        })
+        }
+
 }
+
