@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http'
+import { Observable } from 'rxjs/Observable';
 import { User } from './user'
 
 @Injectable()
@@ -15,30 +16,23 @@ export class UserService {
   create(user:User){
     console.log("create Service",user)
     return this._http.post('/api/users', user)
+    .map(data =>data.json()).toPromise()
+    // .catch(error => Observable.throw(error));
+  }
+
+  login(_user:any){
+
+    console.log('LOGIN SERVICE',_user)
+    return this._http.post('/api/users/authenticate', _user)
     .map(data => {
-            console.log("JSON",data.json())
+      
             let logged = data.json()
       
             localStorage.setItem('loggedUser', JSON.stringify(logged));
       
             return logged
       
-      }).toPromise();
-  }
-
-  login(_user:any){
-    console.log('LOGIN SERVICE',_user)
-    return this._http.post('/api/users/authenticate', _user)
-    .map(data => {
-
-      let logged = data.json()
-
-      localStorage.setItem('loggedUser', JSON.stringify(logged));
-
-      return logged
-
     }).toPromise();
-    
   }
     
   getUsers(){

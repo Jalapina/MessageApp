@@ -12,6 +12,7 @@ export class UserNewComponent implements OnInit {
   users = [];
   loggedUser = User
   user__;
+  message
 
   private _user: any = {};
   constructor( private _userService:UserService, private _router:Router) {
@@ -19,30 +20,22 @@ export class UserNewComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.getUsers();
-    console.log(this.loggedUser)
-  }
-
-  getUsers(){
-    this._userService.getUsers()
-    .then( users => this.users = users)
-    .catch(err => console.log(err));
   }
 
   create(user:User){
-
-    console.log('create',user)
-
     this._userService.create(user)
     .then( status => {this._router.navigateByUrl('/home')} )
-    .catch(err => console.log(err));
+    .catch(err => console.log(err))    
   }
 
   login(_user:any){
     console.log('login() ***',_user)
     this._userService.login(_user)
     .then(response => {this._router.navigateByUrl('/home');})
-    .catch( err => console.log(err));
+    .catch( err => this.message = err)
+    .then(function(message){
+      console.log(message)
+    })
   }
 
   logout(){

@@ -17,7 +17,8 @@ module.exports.home = function(request, response){
 }   
 
 module.exports.login = function(request, response){
-
+    console.log("USER",request.body)
+    
     User.findOne({username: request.body.username}, function(err, user){
         if(err){
             console.log('Server error',err)
@@ -33,22 +34,14 @@ module.exports.login = function(request, response){
             });
         }
         else if(user && !user.validPassword(request.body.password)){
-            console.log('WRONG PASSWORD', user)
-            response.json({
-                errors:{
-                    login:{
-                        message: "Password is incorrect"
-                    }
-                }
+            // console.log('WRONG PASSWORD', user)
+            response.status(403).json({
+                message: "Password is incorrect"
             });
         }
         else {
-            response.json({
-                errors:{
-                    login:{
-                        message:"Email does not exist"
-                    }
-                }
+            response.status(403).json({
+                message:"Email does not exist"
             });
         }
     });
@@ -76,10 +69,8 @@ module.exports.register = function(request, response){
         }
     else{
         console.log("IN ELSE")
-        response.json({
-            errors:{
-                message:"Passwords do not match!"
-            }
+        response.status(403).json({
+            message:"Passwords do not match!"
         })
         }
 

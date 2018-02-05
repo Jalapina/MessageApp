@@ -1,5 +1,4 @@
-<h3>Logged User</h3>
-<p *ngIf="loggedUser">{{ loggedUser | json }}</p>
+<h3>Log In!</h3>
 <app-user-create (createUserEvent)="create($event)"></app-user-create>
 <app-user-login (loginUserEvent)="login($event)"></app-user-login>
-<h1 *ngIf="loggedUser"> {{ loggedUser.username }} </h1> 
+<div *ngIf="message">{{message._body}}</div>
