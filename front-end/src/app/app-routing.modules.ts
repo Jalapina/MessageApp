@@ -6,7 +6,7 @@ import { UserShowComponent } from './user-show/user-show.component'
 import { ChatComponent } from './chat/chat.component'
  
 const routes: Routes = [
-  
+   
     { 
       path: '', 
       pathMatch: 'full', 
