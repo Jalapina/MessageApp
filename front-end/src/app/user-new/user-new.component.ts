@@ -23,6 +23,7 @@ export class UserNewComponent implements OnInit {
   }
 
   create(user:User){
+    console.log("create Service",user)
     this._userService.create(user)
     .then( status => {this._router.navigateByUrl('/home')} )
     .catch(err => console.log(err))    

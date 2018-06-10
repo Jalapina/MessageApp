@@ -32,6 +32,7 @@ module.exports.login = function(request, response){
                 _id: user._id,
                 username: user.username,
             });
+            
         }
         else if(user && !user.validPassword(request.body.password)){
             // console.log('WRONG PASSWORD', user)
@@ -48,7 +49,9 @@ module.exports.login = function(request, response){
 }
 
 module.exports.register = function(request, response){
+
     console.log("NEW USER", request.body)
+    
     let user = new User({
         username: request.body.username,
         password: request.body.password,
@@ -65,7 +68,7 @@ module.exports.register = function(request, response){
                     user:newUser
                 });
             }
-            })
+            });
         }
     else{
         console.log("IN ELSE")

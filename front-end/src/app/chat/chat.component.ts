@@ -41,7 +41,6 @@ export class ChatComponent implements OnInit {
   createReply(){
     
     const id = this;
-
     this.message.sender = this.sender;
           
     this._messageService.createReply(id,this.message)
